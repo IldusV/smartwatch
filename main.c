@@ -1,8 +1,9 @@
 #include "lvgl/lvgl.h"
 //#include "lvgl/demos/lv_demos.h"
-#include "lv_demos/lv_demo.h"
+//#include "lv_demos/lv_demo.h"
 #include "lv_drivers/display/fbdev.h"
 #include "lv_drivers/indev/evdev.h"
+//#include "lv_drv_conf.h"
 #include <unistd.h>
 #include <pthread.h>
 #include <time.h>
