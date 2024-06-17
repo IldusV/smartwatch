@@ -7,6 +7,9 @@
 #include <stdio.h>
 #include <time.h>
 
+//    int hours = 7;
+//     int minutes = 29;
+//     int seconds = 45;
 void time_sync_cb(void)
 {
     time_t current_time;
@@ -24,10 +27,35 @@ void time_sync_cb(void)
     int minutes = local_time->tm_min;
     int seconds = local_time->tm_sec;
 
+    // if(seconds==59){
+    //     seconds=0;
+    //     if(minutes==59)
+    //     {
+    //         minutes=0;
+    //         if(hours==59)
+    //         {
+    //             hours=0;
+    //         }
+    //         else
+    //         {
+    //             hours++;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         minutes++;
+    //     }
+    // }
+    // else
+    // {
+    //     seconds++;
+    // }
+    
+
     // ANALOG
     lv_img_set_angle(ui_sec, (3600/60)*seconds);
-    lv_img_set_angle(ui_minute, (3600/60)*minutes);
-    lv_img_set_angle(ui_hour, (3600/60)*hours);
+    lv_img_set_angle(ui_minute, (3600/60)*minutes + seconds);
+    lv_img_set_angle(ui_hour, (3600/12)*hours + (minutes*(60/12)));
 
     // DIGITAL
     lv_img_set_angle(ui_secdot, (3600/60)*seconds);

@@ -43,7 +43,7 @@ lv_obj_set_x( ui_Label2, 2 );
 lv_obj_set_y( ui_Label2, 82 );
 lv_obj_set_align( ui_Label2, LV_ALIGN_TOP_MID );
 lv_label_set_text(ui_Label2,"01 45");
-lv_obj_set_style_text_color(ui_Label2, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT );
+lv_obj_set_style_text_color(ui_Label2, lv_color_hex(0xf4d03f), LV_PART_MAIN | LV_STATE_DEFAULT );
 lv_obj_set_style_text_opa(ui_Label2, 255, LV_PART_MAIN| LV_STATE_DEFAULT);
 lv_obj_set_style_text_font(ui_Label2, &ui_font_Cadisone, LV_PART_MAIN| LV_STATE_DEFAULT);
 
