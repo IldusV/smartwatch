@@ -1,0 +1,6 @@
+CSRCS += $(wildcard ./ui/components/*.c)
+CSRCS += $(wildcard ./ui/screens/*.c)
+CSRCS += $(wildcard ./ui/*.c)
+CSRCS += $(wildcard ./ui/images/*.c)
+CSRCS += $(wildcard ./ui/fonts/*.c)
+# CSRCS += $(wildcard ./ui/fonts/*.c)

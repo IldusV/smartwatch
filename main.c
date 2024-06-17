@@ -11,6 +11,7 @@
 #include "lv_conf.h"
 #define DISP_BUF_SIZE (240 * 240)
 
+
 void *tick_thread(void *data)
 {
 	(void) data;	// Suppress warnings.
@@ -37,7 +38,7 @@ int main(void)
     pthread_t lvTickThread;
 	int rc;
     
-    LV_LOG_USER("nentered main()\n");
+    LV_LOG_USER("entered main()\n");
     /*LittlevGL init*/
     lv_init();
 
@@ -71,16 +72,19 @@ int main(void)
 
     /*Set a cursor for the mouse*/
     // LV_IMG_DECLARE(mouse_cursor_icon)
-    lv_obj_t * cursor_obj = lv_img_create(lv_scr_act()); /*Create an image object for the cursor */
+    //lv_obj_t * cursor_obj = lv_img_create(lv_scr_act()); /*Create an image object for the cursor */
     // lv_img_set_src(cursor_obj, &mouse_cursor_icon);           /*Set the image source*/
-    lv_indev_set_cursor(mouse_indev, cursor_obj);             /*Connect the image  object to the driver*/
-
+    //lv_indev_set_cursor(mouse_indev, cursor_obj);             /*Connect the image  object to the driver*/
+    backl_init();
     // lv_obj_set_style_bg_color(lv_scr_act(), lv_color_hex(0x2080bb), 0);
     /*Create a Demo*/
     //lv_demo_widgets();
     //lv_example_spinner_1();
     //lv_example_btn_1();
-    lv_example_meter_3();
+    //lv_example_meter_1();
+    //lv_example_slider_1();
+    ui_init();
+    backl_set(40);
     //lv_example_img_4();
 	//lv_example_bmp_1();
     //rc = pthread_create(&lvTickThread, NULL, tick_thread, NULL);
@@ -91,8 +95,8 @@ int main(void)
     //lv_example_btnmatrix_1();
     //lv_example_scroll_6();
     /*Show an image*/
-    lv_obj_t *scr = lv_disp_get_scr_act(NULL);
-    lv_obj_t *img = lv_img_create(scr);
+    //lv_obj_t *scr = lv_disp_get_scr_act(NULL);
+    //lv_obj_t *img = lv_img_create(scr);
     // //lv_show_img(img,background_gorilla_r);
     // lv_obj_clean(img);
     // lv_img_set_src(img, &tux);

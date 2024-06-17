@@ -1,4 +1,6 @@
 build
+temp
+.vscode
+faces
 lvgl
 lv_drivers
-temp
