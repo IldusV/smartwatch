@@ -4,6 +4,39 @@
 // Project name: SquareLine_Project
 
 #include "../ui.h"
+#include <stdio.h>
+#include <time.h>
+
+void time_sync_cb(void)
+{
+    time_t current_time;
+    struct tm *local_time;
+    char time_buffer[6] = {0};
+
+    // Get the current time
+    current_time = time(NULL);
+
+    // Convert to local time
+    local_time = localtime(&current_time);
+
+    // Extract hours, minutes, and seconds
+    int hours = local_time->tm_hour;
+    int minutes = local_time->tm_min;
+    int seconds = local_time->tm_sec;
+
+    // ANALOG
+    lv_img_set_angle(ui_sec, (3600/60)*seconds);
+    lv_img_set_angle(ui_minute, (3600/60)*minutes);
+    lv_img_set_angle(ui_hour, (3600/60)*hours);
+
+    // DIGITAL
+    lv_img_set_angle(ui_secdot, (3600/60)*seconds);
+    sprintf(time_buffer, "%02d:%02d", hours, minutes);
+
+    lv_label_set_text(ui_Label2, time_buffer);
+
+
+}
 
 void ui_ANALOG_screen_init(void)
 {
@@ -11,7 +44,7 @@ ui_ANALOG = lv_obj_create(NULL);
 lv_obj_clear_flag( ui_ANALOG, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 
 ui_Backg = lv_img_create(ui_ANALOG);
-lv_img_set_src(ui_Backg, &ui_img_8_png);
+lv_img_set_src(ui_Backg, &ui_img_9_png);
 lv_obj_set_width( ui_Backg, LV_SIZE_CONTENT);  /// 1
 lv_obj_set_height( ui_Backg, LV_SIZE_CONTENT);   /// 1
 lv_obj_set_align( ui_Backg, LV_ALIGN_CENTER );
@@ -58,15 +91,15 @@ lv_obj_set_x( ui_Temp, 12 );
 lv_obj_set_y( ui_Temp, 3 );
 lv_obj_set_align( ui_Temp, LV_ALIGN_TOP_RIGHT );
 lv_label_set_text(ui_Temp,"25°");
-lv_obj_set_style_text_color(ui_Temp, lv_palette_main(LV_PALETTE_RED), LV_PART_MAIN | LV_STATE_DEFAULT );
+lv_obj_set_style_text_color(ui_Temp, lv_color_hex(0xFFFFEE), LV_PART_MAIN | LV_STATE_DEFAULT );
 lv_obj_set_style_text_opa(ui_Temp, 240, LV_PART_MAIN| LV_STATE_DEFAULT);
 lv_obj_set_style_text_font(ui_Temp, &lv_font_montserrat_20, LV_PART_MAIN| LV_STATE_DEFAULT);
 
 ui_hour_group = lv_obj_create(ui_ANALOG);
-lv_obj_set_width( ui_hour_group, 266);
-lv_obj_set_height( ui_hour_group, 254);
+lv_obj_set_width( ui_hour_group, 250);
+lv_obj_set_height( ui_hour_group, 250);
 lv_obj_set_x( ui_hour_group, 0 );
-lv_obj_set_y( ui_hour_group, 1 );
+lv_obj_set_y( ui_hour_group, 0 );
 lv_obj_set_align( ui_hour_group, LV_ALIGN_CENTER );
 lv_obj_clear_flag( ui_hour_group, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_obj_set_style_bg_color(ui_hour_group, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT );
@@ -104,6 +137,11 @@ lv_obj_set_align( ui_sec, LV_ALIGN_CENTER );
 lv_obj_add_flag( ui_sec, LV_OBJ_FLAG_ADV_HITTEST );   /// Flags
 lv_obj_clear_flag( ui_sec, LV_OBJ_FLAG_SCROLLABLE );    /// Flags
 lv_img_set_pivot(ui_sec,10,110);
+
+//ildusv: code
+lv_timer_create(time_sync_cb, 1000, NULL);
+//
+
 
 lv_obj_add_event_cb(ui_hour_group, ui_event_hour_group, LV_EVENT_ALL, NULL);
 lv_obj_add_event_cb(ui_ANALOG, ui_event_ANALOG, LV_EVENT_ALL, NULL);

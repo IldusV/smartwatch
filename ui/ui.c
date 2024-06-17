@@ -102,9 +102,34 @@ const lv_img_dsc_t *ui_imgset_sm_5afad9686fe[1] = {&ui_img_sm_5afad9686fe48_png}
     #error "LV_COLOR_16_SWAP should be 0 to match SquareLine Studio's settings"
 #endif
 
+#include <stdio.h>
+#include <time.h>
+
 ///////////////////// ANIMATIONS ////////////////////
 void min_Animation( lv_obj_t *TargetObject, int delay)
 {
+#if 0
+    time_t current_time;
+    struct tm *local_time;
+  //  char time_buffer[6] = {0};
+
+    // Get the current time
+    current_time = time(NULL);
+
+    // Convert to local time
+    local_time = localtime(&current_time);
+
+    // Extract hours, minutes, and seconds
+    int hours = local_time->tm_hour;
+    int minutes = local_time->tm_min;
+    int seconds = local_time->tm_sec;
+
+    // ANALOG
+//     lv_img_set_angle(ui_sec, (3600/60)*seconds);
+//     lv_img_set_angle(ui_minute, (3600/60)*minutes);
+//     lv_img_set_angle(ui_hour, (3600/60)*hours);
+
+
 ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
 PropertyAnimation_0_user_data->target = TargetObject;
 PropertyAnimation_0_user_data->imgset = ui_imgset_;
@@ -115,21 +140,22 @@ lv_anim_init(&PropertyAnimation_0);
 lv_anim_set_time(&PropertyAnimation_0, 45000);
 lv_anim_set_user_data(&PropertyAnimation_0, PropertyAnimation_0_user_data);
 lv_anim_set_custom_exec_cb(&PropertyAnimation_0, _ui_anim_callback_set_image_angle );
-lv_anim_set_values(&PropertyAnimation_0, 0, 3600 );
+lv_anim_set_values(&PropertyAnimation_0, 0, (3600/60)*minutes );
 lv_anim_set_path_cb( &PropertyAnimation_0, lv_anim_path_linear);
 lv_anim_set_delay( &PropertyAnimation_0, delay + 0 );
 //lv_anim_set_deleted_cb( &PropertyAnimation_0, _ui_anim_callback_free_user_data );
 lv_anim_set_playback_time(&PropertyAnimation_0, 0);
 lv_anim_set_playback_delay(&PropertyAnimation_0, 0);
- lv_anim_set_repeat_count(&PropertyAnimation_0, LV_ANIM_REPEAT_INFINITE );
+ lv_anim_set_repeat_count(&PropertyAnimation_0, 0 );
 lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
 lv_anim_set_early_apply( &PropertyAnimation_0, false );
  lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_image_angle );
 lv_anim_start(&PropertyAnimation_0);
-
+#endif
 }
 void hour_Animation( lv_obj_t *TargetObject, int delay)
 {
+#if 0
 ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
 PropertyAnimation_0_user_data->target = TargetObject;
 PropertyAnimation_0_user_data->imgset = ui_imgset_;
@@ -151,10 +177,11 @@ lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
 lv_anim_set_early_apply( &PropertyAnimation_0, false );
  lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_image_angle );
 lv_anim_start(&PropertyAnimation_0);
-
+#endif
 }
 void sec_Animation( lv_obj_t *TargetObject, int delay)
 {
+#if 0
 ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
 PropertyAnimation_0_user_data->target = TargetObject;
 PropertyAnimation_0_user_data->imgset = ui_imgset_;
@@ -176,7 +203,7 @@ lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
 lv_anim_set_early_apply( &PropertyAnimation_0, false );
  lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_image_angle );
 lv_anim_start(&PropertyAnimation_0);
-
+#endif
 }
 void opac_Animation( lv_obj_t *TargetObject, int delay)
 {
@@ -204,6 +231,7 @@ lv_anim_start(&PropertyAnimation_0);
 }
 void sec_dot_Animation( lv_obj_t *TargetObject, int delay)
 {
+#if 0
 ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
 PropertyAnimation_0_user_data->target = TargetObject;
 PropertyAnimation_0_user_data->imgset = ui_imgset_;
@@ -225,7 +253,7 @@ lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
 lv_anim_set_early_apply( &PropertyAnimation_0, false );
  lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_image_angle );
 lv_anim_start(&PropertyAnimation_0);
-
+#endif
 }
 
 ///////////////////// FUNCTIONS ////////////////////

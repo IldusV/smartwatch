@@ -84,7 +84,7 @@ int main(void)
     //lv_example_meter_1();
     //lv_example_slider_1();
     ui_init();
-    backl_set(40);
+    backl_set(80);
     //lv_example_img_4();
 	//lv_example_bmp_1();
     //rc = pthread_create(&lvTickThread, NULL, tick_thread, NULL);
@@ -106,7 +106,7 @@ int main(void)
 
     while(1) {
         lv_timer_handler();
-        usleep(5000);
+        usleep(1000);
     }
 
     return 0;
